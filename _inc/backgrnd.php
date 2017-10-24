@@ -1,17 +1,4 @@
-<!--
-Get the current time
-Based on time of day(morning,afternoon, evening, night) change background to match
-Based on the month, change to a different background
--->
-<html lang="en">
-
-<head>
-
-</head>
-
-<body>
-    <?php
-
+<?php
 function timegreet() {
     date_default_timezone_set('America/New_York'); //Set timezone
     $hour = date('H'); //Get current time (24 hour)
@@ -22,86 +9,70 @@ function timegreet() {
     return $greeting;
     }
 
-function season() {
-    $monthname = date('M');
-    $monthname = strtolower($monthname);
-
-    $images = array(
-        'winter' => 'winter',
-        'spring' => 'spring',
-        'summer' => 'summer',
-        'autumn' => 'autumn'
-        );
-
+    function season() {
+    $monthName = date('m');
     $seasons = array(
-        'winter' => array('dec', 'jan', 'feb'),
-        'spring' => array('mar', 'apr', 'may'),
-        'summer' => array('jun', 'jul', 'aug'),
-        'autumn' => array('sep', 'oct', 'nov')
+        'winter' => array(12,1,2),
+        'spring' => array(3,4,5),
+        'summer' => array(6,7,8),
+        'autumn' => array (9,10,11)
         );
 
-    foreach ($seasons AS $key => $montharray) {
-	   if (in_array($monthname, $montharray)) {
-           $season = $key;
-           break;
-       }
-        return $key;
-    }
-
-    $background = $images[$key]; //Define background image based on season
-    echo $background;
+    foreach ($seasons AS $key => $monthArray) {
+        if (in_array($monthName, $monthArray)){
+            $season = $key;
+            break;
+        }
 
     }
-    $bkImage = 'url(../img/bkg/'.season().'-'.(timegreet()).'.jpg)';
-    echo $bkImage;
-        ?>
+    return $season;
 
-        <style>
-            body {
-                background-image: url(../_img/bkg/<?php echo season().'-'.(timegreet());
-                ?>.jpg);
-                background-repeat: repeat;
-                background-attachment: scroll;
-                margin: 0px;
-                padding: 0px;
-            }
-
-            #morning {
-                background: rgba(0, 0, 0, 0);
-                padding: 0px;
-                margin: 0px;
-                height: 100%;
-                width: 100%;
-            }
+    }
 
 
-            #afternoon {
-                background: rgba(0, 0, 0, 0);
-                padding: 0px;
-                margin: 0px;
-                height: 100%;
-                width: 100%;
-            }
+    ?>
+<style> body {
+    background-image: url(_img/bkg/<?php echo season().'/'.strtolower((timegreet()));
+    ?>.jpg);
+    background-repeat: repeat;
+    background-attachment: scroll;
 
-            #evening {
-                background: rgba(0, 0, 0, 0);
-                color: white;
-                padding: 0px;
-                margin: 0px;
-                height: 100%;
-                width: 100%;
-            }
+}
 
-            #night {
-                background: rgba(0, 0, 0, 0);
-                color: white;
-                padding: 0px;
-                margin: 0px;
-                height: 100%;
-                width: 100%;
-            }
+#morning {
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
 
-        </style>
-</body>
 
-</html>
+#afternoon {
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#evening {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#night {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+</style>
+
