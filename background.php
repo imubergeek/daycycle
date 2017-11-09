@@ -9,6 +9,10 @@ For use across multiple sites as an include.
 <head>
     <?php date_default_timezone_set('America/New_York'); //Set timezone ?>
     <style>
+        html {
+            overflow: hidden;
+        }
+
         body {
             background: url('_img/bkg/<?php echo season().'_'.strtolower(timeGreet()); ?>.jpg');
             background-repeat: no-repeat;
@@ -99,6 +103,7 @@ For use across multiple sites as an include.
     echo '</div>';
     //For Testing
 
+    if(date('m') == '12'){include('lights.php');}
     ?>
 
 </body>
