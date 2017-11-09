@@ -17,6 +17,24 @@ For use across multiple sites as an include.
             padding: 0px;
         }
 
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+        }
+
+        .fullscreen-bg__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .footer {
             background: rgba(0, 0, 0, .2);
             color: white;
@@ -63,6 +81,15 @@ For use across multiple sites as an include.
         return $key;
     }
 
+    function videoBack(){
+        echo '<div class="fullscreen-bg">';
+        echo '<video loop muted autoplay class="fullscreen-bg__video">';
+        echo '<source src="_vid/';
+        echo season().'_'.timeGreet();
+        echo '.mp4" type="video/mp4"></video></div>';
+    }
+//videoBack();
+    //For Testing
     echo '<div class="footer">';
     echo 'Good '.timeGreet().', ';
     echo 'Today is '.$monthNum;
@@ -70,7 +97,10 @@ For use across multiple sites as an include.
     echo '-'.date('y');
     echo ' and the season is '.ucfirst(season()).'<br>';
     echo '</div>';
+    //For Testing
+
     ?>
+
 </body>
 
 </html>
